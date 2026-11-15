@@ -306,6 +306,16 @@ main:focus { outline: none; }
   .footer__inner { align-items: flex-start; flex-wrap: wrap; }
 }
 
+@media (orientation: landscape) and (min-width: 47.01rem) and (max-width: 62rem) and (max-height: 32rem) {
+  .hero--iron-carnage .hero__inner { min-height: 0; padding-block: 1.4rem; }
+  .hero--iron-carnage .hero__title--image { max-width: 18rem; margin-block: .6rem .55rem; }
+  .hero--iron-carnage .hero__summary { font-size: 1.55rem; }
+  .hero--iron-carnage .hero__description { margin-top: .55rem; font-size: .9rem; line-height: 1.45; }
+  .hero--iron-carnage .actions { margin-top: .9rem; }
+  .hero--iron-carnage .scene__vehicle { width: 55%; right: 2%; }
+  .hero__emblem { top: .7rem; right: 1rem; width: 3.65rem; }
+}
+
 @media (max-width: 47rem) {
   .header__inner { min-height: 0; grid-template-columns: 1fr auto; row-gap: .3rem; padding-block: .68rem .25rem; }
   .brand { width: 10.6rem; }
