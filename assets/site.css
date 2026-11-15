@@ -118,21 +118,36 @@ main:focus { outline: none; }
 .hero--home .hero__title { font-size: clamp(5.1rem, 9.4vw, 9.6rem); }
 .hero__summary { max-width: 30rem; font: italic 800 clamp(1.45rem, 3vw, 2.45rem)/1.06 var(--display); text-transform: uppercase; }
 .hero__description { color: #cfdbd9; margin-top: .95rem; max-width: 34rem; }
-.hero--iron-carnage { background: radial-gradient(ellipse at 35% 34%, #2d211a, #0c0f13 74%); }
-.hero--iron-carnage .hero__art {
-  inset-inline-start: 33%;
-  padding: 1rem 2.5% 1rem 12%;
-  background: #0d1115;
-  clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
+.hero--iron-carnage { background: #100d0b; }
+.hero--iron-carnage::after { background: linear-gradient(90deg, var(--amber), transparent 82%); }
+.hero--iron-carnage .hero__art { inset: 0; clip-path: none; overflow: hidden; }
+.hero--iron-carnage .scene__background { object-position: 69% 52%; }
+.hero--iron-carnage .scene__vehicle, .game-card--iron-carnage .scene__vehicle {
+  position: absolute;
+  width: 58%;
+  height: auto;
+  right: 3%;
+  bottom: -3%;
+  filter: drop-shadow(0 1.3rem 1rem #100805c9);
 }
-.hero--iron-carnage .hero__art img { object-fit: contain; object-position: center; }
-.hero--iron-carnage .hero__art::after { background: linear-gradient(105deg, #5a322742, transparent 30%); }
-.hero--iron-carnage .hero__edge {
-  inset-inline-start: 32.6%;
-  background: linear-gradient(175deg, #f0a46066, #f0a46008 40%, #f0a46052);
-  clip-path: polygon(18.4% 0, 18.75% 0, .65% 100%, 0 100%);
+.hero--iron-carnage .scene__vehicle { max-width: 68rem; }
+.hero--iron-carnage .hero__art::after {
+  background:
+    linear-gradient(90deg, #100d0af2, #100d0adb 23%, #100d0a9c 37%, #100d0a1f 57%, transparent 76%),
+    linear-gradient(0deg, #100d0ae8, transparent 25%);
 }
+.hero--iron-carnage .hero__edge { display: none; }
 .hero--iron-carnage .eyebrow { color: var(--amber); }
+.hero--iron-carnage .button--primary { background: #ffad62; color: #221306; }
+.hero--iron-carnage .button--primary:hover { background: #ffd39e; }
+.hero__emblem {
+  position: absolute;
+  top: clamp(1rem, 2.7vw, 2.5rem);
+  right: var(--gutter);
+  width: clamp(3.75rem, 8vw, 7.25rem);
+  filter: drop-shadow(0 .2rem .6rem #100805d9);
+  pointer-events: none;
+}
 .hero__title--image { transform: translateX(-2%); max-width: 100%; margin: 1.7rem 0 1.2rem; }
 .hero__title--image img { width: 100%; }
 
@@ -175,6 +190,15 @@ main:focus { outline: none; }
 }
 .game-card__image img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
 .game-card__image:hover img { transform: scale(1.045); }
+.game-card--iron-carnage .scene__vehicle { width: 66%; right: 6%; bottom: -4%; }
+.game-card--iron-carnage .game-card__emblem {
+  position: absolute;
+  width: clamp(3.4rem, 7.4vw, 6.4rem);
+  height: auto;
+  top: .65rem;
+  left: .65rem;
+  filter: drop-shadow(0 .18rem .45rem #140902d9);
+}
 .game-card__jump, .gallery__expand {
   display: grid;
   place-items: center;
@@ -194,6 +218,8 @@ main:focus { outline: none; }
 .game-card__copy { padding: clamp(1rem, 2.7vw, 1.8rem); }
 .game-card__copy h3 { margin-block: .48rem .35rem; font-size: clamp(2rem, 4.4vw, 3.4rem); }
 .game-card__copy h3 a:hover { color: var(--lime); }
+.game-card__logo { display: inline-block; max-width: min(100%, 14rem); vertical-align: middle; }
+.game-card__logo:hover img { filter: brightness(1.14); }
 .game-card__copy > p:not(.eyebrow), .features p { color: var(--muted); }
 .game-card__actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
 .features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.9rem, 2.3vw, 1.6rem); }
@@ -202,6 +228,10 @@ main:focus { outline: none; }
 .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 2.3vw, 1.7rem); }
 .gallery figure > a { display: block; position: relative; overflow: hidden; border-radius: 7px; border: 1px solid var(--line); }
 .gallery figure img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; transition: filter .16s; }
+.gallery__featured { grid-column: 1 / -1; }
+@media (min-width: 64rem) {
+  .gallery--iron-carnage { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 .gallery figure a:hover img { filter: brightness(1.12); }
 .gallery figcaption { margin-top: .54rem; color: var(--muted); font-size: .88rem; }
 .lightbox { width: min(94vw, 82rem); max-height: 92dvh; padding: 1rem; background: #141b22; color: var(--paper); border: 1px solid #576670; border-radius: 10px; }
@@ -285,8 +315,10 @@ main:focus { outline: none; }
   .hero { display: flex; flex-direction: column; }
   .hero__art, .hero--iron-carnage .hero__art { position: relative; inset: auto; aspect-ratio: 1.26; min-height: 0; clip-path: none; }
   .hero__art img { position: absolute; inset: 0; object-position: 50% 50%; }
-  .hero--iron-carnage .hero__art { aspect-ratio: 1.43; padding: 0; }
-  .hero__art::after, .hero--iron-carnage .hero__art::after { background: linear-gradient(0deg, #10191a 0%, #10191a00 28%); }
+  .hero--iron-carnage .hero__art { aspect-ratio: 1.38; }
+  .hero--iron-carnage .scene__vehicle { inset: auto 2% -3% auto; width: 91%; max-width: 100%; }
+  .hero__art::after { background: linear-gradient(0deg, #10191a 0%, #10191a00 28%); }
+  .hero--iron-carnage .hero__art::after { background: linear-gradient(0deg, #100d0b, transparent 21%); }
   .hero__edge { display: none; }
   .hero__inner, .hero--home .hero__inner { min-height: 0; margin-top: -2rem; padding-top: 0; padding-bottom: 2.2rem; }
   .hero__copy { max-width: 100%; padding-right: 0; }
