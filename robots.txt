@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rayovectratecnologialtda.github.io/rayovectra-games/sitemap.xml
